@@ -40,7 +40,8 @@ def greeting_to_cognizant_externship_2(ppl_info):
 
     print(greeting_messages)
 
-greeting_to_cognizant_externship_2(my_info)
+if __name__ == "__main__":
+    greeting_to_cognizant_externship_2(my_info)
 
 
 

@@ -65,7 +65,7 @@ def get_int(prompt: str) -> int:
 def get_operator(prompt: str) -> str:
     operations = {"+", "-", "*", "/", "%"}
     while True:
-        input_str = input(prompt)
+        input_str = input(prompt).strip()
         if not input_str in operations:
             raise OperationNotFoundError(
                 "Invalid operation: Oops, you have to start again...",
@@ -81,21 +81,26 @@ def number_checker(number: int):
     else:
         print("This number is negative. Better luck next time!\n")
 
-while True:
-    firstValue = get_int("Please enter a valid number (e.g. 10): ")
-    number_checker(firstValue)
-    operator = get_operator("Please enter the Arithmetic operator (e.g. + - * / %): ")
-    secondValue = get_int("\nPlease enter the second number: ")
-    number_checker(secondValue)
+def main():
+    while True:
+        firstValue = get_int("Please enter a valid number (e.g. 10): ")
+        number_checker(firstValue)
+        operator = get_operator("Please enter the Arithmetic operator (e.g. + - * / %): ")
+        secondValue = get_int("\nPlease enter the second number: ")
+        number_checker(secondValue)
 
-    calculator = Task2Calculator(firstValue, secondValue, operator)
-    outcome = calculator.calculate()
-    print(f"Result: {firstValue} {operator} {secondValue} = {outcome}")
+        calculator = Task2Calculator(firstValue, secondValue, operator)
+        outcome = calculator.calculate()
+        print(f"Result: {firstValue} {operator} {secondValue} = {outcome}")
 
-    oneMoreTime = input("It is so boring right? Enter Y if you wanna do it again, otherwise N to exit: ")
-    if oneMoreTime != "Y":
-        print("You are the first user of my Calculator! Bye~~~~")
-        break
+        again = input("It is so boring right? Enter Y if you wanna do it again, otherwise N to exit: ")
+        if again != "Y":
+            print("You are the first user of my Calculator! Bye~~~~")
+            break
+
+if __name__ == "__main__":
+    main()
+
 
 
 
